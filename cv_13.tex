@@ -1,0 +1,209 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wilson Resume/CV
+% XeLaTeX Template
+% Version 1.0 (22/1/2015)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Howard Wilson (https://github.com/watsonbox/cv_template_2004) with
+% extensive modifications by Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article} % Default font size
+
+\input{structure.tex} % Include the file specifying document layout
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Amit Arya} % Print the main header
+
+%------------------------------------------------
+
+\parbox{0.5\textwidth}{ % First block
+\begin{tabbing} % Enables tabbing
+\hspace{3cm} \= \hspace{4cm} \= \kill % Spacing within the block
+{\bf Address} \> 777 W MiddleField Road, Apt\# 75,\\ % Address line 1
+\> Mountain View, 94043 \\ % Address line 2
+{\bf Date of Birth} \> 21$^{st}$ December 1987 \\ % Date of birth 
+{\bf Nationality} \> Indian \\% Nationality
+\end{tabbing}}
+\hfill % Horizontal space between the two blocks
+\parbox{0.5\textwidth}{ % Second block
+\begin{tabbing} % Enables tabbing
+\hspace{3cm} \= \hspace{4cm} \= \kill % Spacing within the block
+{\bf Home Phone} \> +1 (631) 682 3587 \\ % Home phone
+{\bf Mobile Phone} \> +1 (631) 682 3587 \\ % Mobile phone
+{\bf Email} \> {arya\_amit87 AT yahoo.com} \\ % Email address
+\end{tabbing}}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\tabbedblock{
+\bf{2011-2013} \> MS in Computer Science - {Stony Brook University, New York} \\[5pt]
+\>GPA - 3.73/4\\
+\>\+
+}
+
+%------------------------------------------------
+
+\tabbedblock{
+\bf{2006-2010} \> BTech in Mathematics and Computing - Indian Institute of Technology, Guwahati, India\\[5pt]
+\>GPA - 8.39/10\\ [5pt]
+}
+
+%-----------------------------------------------------------
+%         TECHNICAL SKILLS
+%-----------------------------------------------------------
+\section{Technical Skills}
+
+\tabbedblock{
+\bf{Languages} \> C, C++,Python ,x86 Assembly, Shell Script \\[5pt]
+\bf{Databases} \> IBM DB2, MySQL (PL/SQL), RocksDB \\[5pt]
+\bf{Libraries} \> gcc, LLVM, Gem5, Apache Tomcat, Apache zookeeper, FUSE \\[5pt]
+\bf{OSes} \> Linux 2.6(Ubuntu), FreeBSD 9.0 (CLANG compatible),Windows \\ [5pt]
+}
+%----------------------------------------------------------------------------------------
+%	RESEARCH PROJECTS
+%----------------------------------------------------------------------------------------
+
+\section{Projects}
+
+\project
+{HA}{2013-2014}
+{VMware Inc.}
+{Dump In-memory state of the vSphere HA agent (a.k.a FDM).}
+{\begin{itemize-noindent}
+\item{Distribute Systems are difficult to debug due to a number of factors
+like logs on multiple nodes. Nodes can be time out-of-sync. Logs could
+rollover and we could lose history to detect when and where the issue 
+started. HA dump is peoridic dumping of inmemory state of the HA agent
+giving an aggregate overview of the cluster at periodic intervals thus
+facilitating faster debugging.}
+\end{itemize-noindent}}
+
+\project
+{HA}{2013-2014}
+{VMware Inc.}
+{Reduce FDM memory requirements.}
+{\begin{itemize-noindent}
+\item{Wrote a mem-tracker to identify the hotspots.}
+\item{Optimized the hotspots by revisiting the data-stuructures used.}
+\item{Reworked on the locking strategy.}
+\end{itemize-noindent}}
+
+\project
+{HA}{2013-2014}
+{VMware Inc.}
+{Add logic in vSphere-HA for non-persistent forked VMs.}
+{\begin{itemize-noindent}
+\item{With VMFork a VM can be forked to a non-persistent child (A child VM always colocates with the parent VM since it doesn't
+persist anything. )}
+\item{Added logic in HA to understand such VMs and do Failovers in failure scenarios.}
+\end{itemize-noindent}}
+
+\project
+{JIT}{2012-2013}
+{Stony Brook University}
+{Building infrastructure for JIT compilation of FreeBSD.}
+{\begin{itemize-noindent}
+\item{Developed LLVM+Qemu fusion which could take linked kernel bitcode and run it. There were/are a number of challenges in this project. For Example LLVM doesn’t handle 16 bit code. Moreover, how to handle assembly code used in trampoline , interrupt vector routines etc and the design to support multiple architectures. Successfully able to run FreeBSD in this LLVM-Qemu fusion and on bare metal. Poster accepted in SOSP 2013.}
+\end{itemize-noindent}}
+
+\project
+{SeCoS}{2012-2013}
+{Stony Brook University}
+{Secure Context Switching for protecting applications from maligned OS.}
+{\begin{itemize-noindent}
+\item{If an OS is comprised can an application do a secure context switch from user mode to kernel mode without using any hypervisor in the TCB. The idea is to modify GEM5 emulator for X86 and add a buffer where the hardware can spill registers on an interrupt. As a part of testing I also ported JOS on GEM5.}
+\end{itemize-noindent}}
+
+\project
+{JOS64}{2011-2012}
+{Stony Brook University}
+{Ported JOS an exokernel used in academia to 64-bit.}
+{\begin{itemize-noindent}
+\item{Ported JOS kernel to 64 bit which could be reused in academia for teaching.}
+\item{Rewrote bootstrapping module and initial trampoline code to support long mode.}
+\item{Rewrote the memory management and paging for 64 bits}
+\item{Rewrote interrupt and trap handlers for 64 bits.}
+\item{Added SMP support to JOS.}
+\end{itemize-noindent}}
+
+%------------------------------------------------
+%       WORK EXPERIENCE 
+%------------------------------------------------
+\section{Work Experience}
+\job 
+{Aug 2013-}{Present}
+{VMware Inc.}
+{Member of Technical Staff}
+{Software Developer in the vSphere-HA team}
+{
+\begin{itemize-noindent}
+\item{In addition to a number of critical bug fixes worked on projects mentioned in Projects section.}
+\end{itemize-noindent}
+}
+
+\job 
+{Jun 2010-}{Aug 2011}
+{IBM India Software Labs}
+{Software Engineer.}
+{Software Developer in the vSphere-HA team}
+{
+\begin{itemize-noindent}
+\item{Software Developer, IBM Tivoli Security. Worked in Incubation Project of Integrating IBM security products with a Healthcare portal to provide features like Single sign-on, Role Management and Separation of Duties. After two months joined the Role Management Team and was one of the developers of IBM Security Role and Policy Modeler.}
+\end{itemize-noindent}
+}
+
+\section{Internships}
+\job 
+{Jan 2013-}{May 2013}
+{Stony Brook University}
+{Research Assistant}
+{Software Developer in the vSphere-HA team}
+{
+\begin{itemize-noindent}
+\item{In addition to a number of critical bug fixes worked on projects mentioned in Projects section.}
+\end{itemize-noindent}
+}
+\job 
+{May 2012-}{July 2012}
+{CA Technologies}
+{Research Assistant.}
+{Software Developer in the vSphere-HA team}
+{
+\begin{itemize-noindent}
+\item{Worked on writing and integrating a credit-vault to Nimbus Seawolf project.}
+\end{itemize-noindent}
+}
+\job 
+{May 2009 -}{Jul 2009}
+{IBM India Software Labs}
+{Software Engineer}
+{Software Developer in the vSphere-HA team}
+{
+\begin{itemize-noindent}
+\item{Developed a software client which could work along with IBM Tivoli Security Policy Manager (TSPM).The role of the software was to discover the systems in the Network that are not compliant with the authorization policies mentioned in a standard XACML file and to make them compliant using TSPM..}
+\end{itemize-noindent}
+}
+\end{document}
