@@ -89,16 +89,18 @@
 \section{Projects}
 
 \project
-{HA}{2013-2014}
+{HA}{2014-2015}
 {VMware Inc.}
-{Dump In-memory state of the vSphere HA agent (a.k.a FDM).}
+{Add logic in vSphere-HA for non-persistent forked VMs.}
 {\begin{itemize-noindent}
-\item{Distribute Systems are difficult to debug due to a number of factors
-like logs on multiple nodes. Nodes can be time out-of-sync. Logs could
-rollover and we could lose history to detect when and where the issue 
-started. HA dump is peoridic dumping of inmemory state of the HA agent
-giving an aggregate overview of the cluster at periodic intervals thus
-facilitating faster debugging.}
+\item{Forked VMs which don't have a state, have a contraint that
+they can run on the same host where the parent is running. Modified
+HA code to identify such special VMs by adding new properties. Before
+this VMs didn't have any hierarchy tree because each VM could be failed
+over independently by HA. With the addition of such non-persistent clone
+VMs HA needed to maintain a hierarchical VMs namespaces like filesystems
+or pid-namespaces in Linux. Added code to support that in HA.
+}
 \end{itemize-noindent}}
 
 \project
@@ -106,19 +108,28 @@ facilitating faster debugging.}
 {VMware Inc.}
 {Reduce FDM memory requirements.}
 {\begin{itemize-noindent}
-\item{Wrote a mem-tracker to identify the hotspots.}
-\item{Optimized the hotspots by revisiting the data-stuructures used.}
-\item{Reworked on the locking strategy.}
+\item{Wrote a mem-tracker i.e an overloaded new operator that gets
+called upon every memory allocation carrying filename, lineno and
+Object type information. Used this information to find out hotspots
+that points in code which were leading to losses due to fragmentation,
+Any cyclic dependencies in chunk allocation etc. Also reworked on
+datastructures used to reduce the size of metadata the master holds
+in memory. For Eg for small numbers don't use maps since it has a huge
+memory hog. Combined mutexes to make it loose-grained in cases which
+shouldn't hit performace.}
 \end{itemize-noindent}}
 
 \project
 {HA}{2013-2014}
 {VMware Inc.}
-{Add logic in vSphere-HA for non-persistent forked VMs.}
+{Dump In-memory state of the vSphere HA agent (a.k.a FDM).}
 {\begin{itemize-noindent}
-\item{With VMFork a VM can be forked to a non-persistent child (A child VM always colocates with the parent VM since it doesn't
-persist anything. )}
-\item{Added logic in HA to understand such VMs and do Failovers in failure scenarios.}
+\item{Implemented a Thread/Job Scheduler Dump Jobs. Wrote RateLimiter
+to control the rate of Dump requests to be processed. Used Observer
+design pattern to add hooks in all modules to act on dump requests i.e
+On a dump request each memory dumps its in-memory matadata like cluster
+status, inventory state etc. to give an aggregate view of the cluster.
+}
 \end{itemize-noindent}}
 
 \project
@@ -157,7 +168,6 @@ persist anything. )}
 {Aug 2013-}{Present}
 {VMware Inc.}
 {Member of Technical Staff}
-{Software Developer in the vSphere-HA team}
 {
 \begin{itemize-noindent}
 \item{In addition to a number of critical bug fixes worked on projects mentioned in Projects section.}
@@ -167,8 +177,7 @@ persist anything. )}
 \job 
 {Jun 2010-}{Aug 2011}
 {IBM India Software Labs}
-{Software Engineer.}
-{Software Developer in the vSphere-HA team}
+{Software Engineer}
 {
 \begin{itemize-noindent}
 \item{Software Developer, IBM Tivoli Security. Worked in Incubation Project of Integrating IBM security products with a Healthcare portal to provide features like Single sign-on, Role Management and Separation of Duties. After two months joined the Role Management Team and was one of the developers of IBM Security Role and Policy Modeler.}
@@ -180,7 +189,6 @@ persist anything. )}
 {Jan 2013-}{May 2013}
 {Stony Brook University}
 {Research Assistant}
-{Software Developer in the vSphere-HA team}
 {
 \begin{itemize-noindent}
 \item{In addition to a number of critical bug fixes worked on projects mentioned in Projects section.}
@@ -189,8 +197,7 @@ persist anything. )}
 \job 
 {May 2012-}{July 2012}
 {CA Technologies}
-{Research Assistant.}
-{Software Developer in the vSphere-HA team}
+{Research Assistant}
 {
 \begin{itemize-noindent}
 \item{Worked on writing and integrating a credit-vault to Nimbus Seawolf project.}
@@ -200,7 +207,6 @@ persist anything. )}
 {May 2009 -}{Jul 2009}
 {IBM India Software Labs}
 {Software Engineer}
-{Software Developer in the vSphere-HA team}
 {
 \begin{itemize-noindent}
 \item{Developed a software client which could work along with IBM Tivoli Security Policy Manager (TSPM).The role of the software was to discover the systems in the Network that are not compliant with the authorization policies mentioned in a standard XACML file and to make them compliant using TSPM..}
